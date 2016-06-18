@@ -2,6 +2,9 @@
 #
 # idanwe's dotfiles
 
+export DOTF=~/.dotfiles
+export DOTL=~/.dotlocal
+
 source `dirname $0`/framework
 
 ##############################################################################################################
@@ -74,8 +77,19 @@ install_osx_tuning() {
   ./osx-tuning.sh
 }
 
+install_symlinks() {
+  header 'Install symlinks {.bash_profile, .gitconfig, ...}'
+  ln -sv "$DOTF/dots/.aliases" ~
+  ln -sv "$DOTF/dots/.exports" ~
+  ln -sv "$DOTF/dots/.bash_profile" ~
+  # ln -sv "$DOTF/dots/.inputrc" ~
+  ln -sv "$DOTF/dots/.gitconfig" ~
+  ln -sv "$DOTF/dots/.gitignore_global" ~
+}
+
 # run the install function
 install_xcode
 install_brew
 install_common
 install_osx_tuning
+install_symlinks

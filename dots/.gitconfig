@@ -1,9 +1,9 @@
 # Add these lines (with your details) to ~/.dotlocal/gitconfig
-[user]
-  name = Idan Wender
-  email = idanwe2@gmail.com
-[github]
-  user = idanwe
+# [user]
+#  name = Idan Wender
+#  email = idanwe2@gmail.com
+# [github]
+#  user = idanwe
 
 [include]
   path = ~/.dotlocal/gitconfig
@@ -11,6 +11,7 @@
 [color]
   ui = auto
   diff = auto
+
 [alias]
   pl = pull --rebase
   pm = pull-me
@@ -31,7 +32,7 @@
   ff = merge --ff-only
   pullff = pull --ff-only
   noff = merge --no-ff
-  l = log --graph --abbrev-commit --date=relative 
+  l = log --graph --abbrev-commit --date=relative
   la = !git l --all
   div = divergence
   gn = goodness
@@ -70,6 +71,6 @@
 
 [core]
   editor = /usr/bin/nano
-#  pager = 
+#  pager =
 ;[credential]
 	;helper = osxkeychain
