@@ -1,0 +1,123 @@
+#!/bin/bash
+
+# Colors {{{1
+export BLACK="\033[30m"
+export GRAY="\033[1;30m"
+export RED="\033[31m"
+export GREEN="\033[32m"
+export YELLOW="\033[33m"
+export BLUE="\033[34m"
+export CYAN="\033[36m"
+export UNDERLINE="\033[4m"
+export RESET="\033[0m"
+
+# display methods (header/bullet/info/success/error) {{{1
+title() {
+  echo -e "\n${BLUE}$*"
+  echo "$*" | sed 's/./=/g'
+  echo -e $RESET
+}
+
+header() {
+  echo -e "\n${BLUE}${UNDERLINE}☻ $*$RESET"
+}
+
+bullet() {
+  echo -e -n "${YELLOW}➜$RESET $*"
+}
+
+info() {
+  echo -e "${CYAN}$*$RESET"
+}
+
+success() {
+  echo -e "${GREEN}✔ $*$RESET"
+}
+
+error() {
+  echo -e "${RED}✘ $*$RESET"
+}
+
+# Check if command exists {{{1
+has_command() {
+  type "$1" > /dev/null 2>&1
+}
+
+command_missing() {
+  ! has_command "$1"
+}
+
+
+# NPM {{{1
+npm_install() {
+  bullet "Installing ${1}..."
+
+  if ! has_command npm; then
+    error "npm is not installed, skipping"
+    return
+  fi
+
+  if [ "`npm_cache | grep \"\\b$1\\b\"`" ]; then
+    info " already installed"
+  else
+    npm="npm"
+    if [ "$OS" == "linux" ]; then npm="sudo npm"; fi
+    $npm install -g $*
+  fi
+}
+
+rm -f /tmp/npm_cache
+
+npm_cache() {
+  if [ ! -e /tmp/npm_cache ]; then
+    npm ls -g 2>/dev/null > /tmp/npm_cache
+  fi
+  cat /tmp/npm_cache
+}
+
+
+# Homebrew {{{1
+brew_install() {
+  bullet "Installing ${1}... "
+
+  #if [ "`brew ls -1 | grep \"^$1\$\"`" != "" ]; then
+  if has_brew_package "$1"; then
+    info "already installed"
+  else
+    brew install $*
+  fi
+}
+
+has_brew_package() {
+  [ "`brew ls -1 | grep \"^$1\$\"`" != "" ]
+}
+
+brew_tap() {
+  repo=$1
+  bullet "Tapping brew repository ${repo}... "
+  if has_brew_tap "$repo"; then
+    info "already installed"
+  else
+    brew tap $*
+  fi
+}
+
+has_brew_tap() {
+  [ "`brew tap | grep \"^$1\$\"`" != "" ]
+}
+
+# Homebrew Cask {{{1
+
+brew_cask_install() {
+  bullet "Installing ${1}... "
+
+  if has_brew_cask_package "$1"; then
+    info "already installed"
+  else
+    brew cask install $*
+  fi
+}
+
+has_brew_cask_package() {
+  [ "`brew cask list | grep \"^$1\$\"`" != "" ]
+}
