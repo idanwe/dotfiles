@@ -2,7 +2,7 @@
 #
 # idanwe's dotfiles
 
-source `dirname $0`/../framework
+source `dirname $0`/framework
 
 ##############################################################################################################
 ### XCode Command Line Tools
@@ -67,7 +67,7 @@ install_common() {
   # Later, confirm iterm settings aren't conflicting.
 
   # Install the Flat theme for iTerm
-  open "../configs/Flat.itermcolors" # TODO: fix the path
+  open "$DOTF_DIR/configs/Flat.itermcolors"
 }
 
 install_osx_tuning() {
