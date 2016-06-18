@@ -53,7 +53,6 @@ brew_install tree                           #*** isplay directories as trees (wi
 
 brew_install terminal-notifier              #*** Send OS X User Notifications from the command-line
 
-brew_install zsh                            #*** UNIX shell (command interpreter)
 brew_install tmux                           #*** Terminal multiplexer
 
 # Remove outdated versions from the cellar

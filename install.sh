@@ -2,9 +2,6 @@
 #
 # idanwe's dotfiles
 
-export DOTF=~/.dotfiles
-export DOTL=~/.dotlocal
-
 source `dirname $0`/framework
 
 ##############################################################################################################
@@ -55,6 +52,10 @@ install_brew() {
   ./scripts/brew-cask.sh
 }
 
+install_zsh() {
+  ./scripts/install-zsh.sh
+}
+
 install_common() {
   header 'Install Common'
 
@@ -78,18 +79,18 @@ install_osx_tuning() {
 }
 
 install_symlinks() {
-  header 'Install symlinks {.bash_profile, .gitconfig, ...}'
-  ln -sv "$DOTF/dots/.aliases" ~
-  ln -sv "$DOTF/dots/.exports" ~
-  ln -sv "$DOTF/dots/.bash_profile" ~
-  # ln -sv "$DOTF/dots/.inputrc" ~
-  ln -sv "$DOTF/dots/.gitconfig" ~
-  ln -sv "$DOTF/dots/.gitignore_global" ~
+  header 'Install symlinks'
+
+  symlink "$DOTF/dots/bash_profile" ~/.bash_profile
+  # symlink "$DOTF/dots/.inputrc" ~
+  symlink "$DOTF/dots/.gitconfig" ~
+  symlink "$DOTF/dots/.gitignore_global" ~
 }
 
 # run the install function
 install_xcode
 install_brew
+install_zsh
 install_common
 install_osx_tuning
 install_symlinks
