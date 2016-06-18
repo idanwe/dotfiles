@@ -83,8 +83,8 @@ install_symlinks() {
 
   symlink "$DOTF/dots/bash_profile" ~/.bash_profile
   # symlink "$DOTF/dots/.inputrc" ~
-  symlink "$DOTF/dots/.gitconfig" ~
-  symlink "$DOTF/dots/.gitignore_global" ~
+  symlink "$DOTF/dots/git/gitconfig" ~/.gitconfig
+  symlink "$DOTF/dots/git/gitignore_global" ~/.gitignore_global
 }
 
 # run the install function
