@@ -48,11 +48,11 @@ install_xcode() {
 install_brew() {
   header 'Homebrew'
   if command_missing brew; then
-    ./homebrew-install.sh
+    ./scripts/homebrew-install.sh
   fi
 
-  ./brew.sh
-  ./brew-cask.sh
+  ./scripts/brew.sh
+  ./scripts/brew-cask.sh
 }
 
 install_common() {
@@ -70,11 +70,11 @@ install_common() {
   # Later, confirm iterm settings aren't conflicting.
 
   # Install the Flat theme for iTerm
-  open "$DOTF_DIR/configs/Flat.itermcolors"
+  open "$DOTF/configs/Flat.itermcolors"
 }
 
 install_osx_tuning() {
-  ./osx-tuning.sh
+  ./scripts/osx-tuning.sh
 }
 
 install_symlinks() {
