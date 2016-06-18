@@ -50,8 +50,10 @@ alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo 
 
 # navigation shortcuts
 alias godot="cd $DOTF"
+alias go.="cd $DOTF"
 alias goplay="cd $DEVELOPMENT_DIR/playground"
 alias god="cd $DEVELOPMENT_DIR"
+alias godev="cd $DEVELOPMENT_DIR"
 
 
 ############################################
