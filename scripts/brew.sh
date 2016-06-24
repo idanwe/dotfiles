@@ -42,6 +42,7 @@ brew_install homebrew/dupes/screen
 brew_install git                            #*** Distributed revision control system
 brew_install diff-so-fancy                  #*** Good-lookin' diffs. Actually… nah… The best-lookin' diffs.
 brew_install node                           # This installs `npm` too using the recommended installation method
+brew_install mongodb
 
 brew_install ssh-copy-id                    #*** Add a public key to a remote machine's authorized_keys file
 brew_install imagemagick --with-webp        #*** Tools and libraries to manipulate images in many formats
