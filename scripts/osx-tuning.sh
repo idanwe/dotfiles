@@ -112,7 +112,7 @@ chflags nohidden ~/Library
 success 'done'
 
 bullet 'Killing apps'
-kilall Dock > /dev/null 2>&1
-kilall Finder > /dev/null 2>&1
+killall Dock > /dev/null 2>&1
+killall Finder > /dev/null 2>&1
 success 'done'
 
