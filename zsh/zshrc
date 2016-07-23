@@ -9,3 +9,10 @@ source $DOTF/zsh/history.zsh
 
 duration=$((($SECONDS - $START_TIME) * 1000))
 echo "\033[1;30m($(printf '%.2f' $duration)ms)\033[0m"
+
+NPM_PACKAGES="${HOME}/.npm-packages"
+PATH="$NPM_PACKAGES/bin:$PATH"
+
+# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+unset MANPATH # delete if you already modified MANPATH elsewhere in your config
+export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"

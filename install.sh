@@ -87,6 +87,25 @@ install_symlinks() {
   symlink "$DOTF/dots/git/gitignore_global" ~/.gitignore_global
 }
 
+tune_global_npm_no_sudo() {
+  header 'Tune global npm without sudo'
+  # source: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
+
+  # Create a directory for globally packages
+  mkdir "${HOME}/.npm-packages"
+
+  # Indicate to npm where to store globally installed packages. In your ~/.npmrc file add
+  echo "prefix=${HOME}/.npm-packages" >> ~/.npmrc
+
+  # Ensure npm will find installed binaries and man pages. Add the following to your .bashrc/.zshrc:
+  echo 'NPM_PACKAGES="${HOME}/.npm-packages"' >> ~/.zshrc
+  echo 'PATH="$NPM_PACKAGES/bin:$PATH"' >> ~/.zshrc
+
+  # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
+  echo "unset MANPATH" >> ~/.zshrc # delete if you already modified MANPATH elsewhere in your config
+  echo 'export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"' >> ~/.zshrc
+}
+
 # run the install function
 install_xcode
 install_brew
@@ -94,3 +113,4 @@ install_zsh
 install_common
 install_osx_tuning
 install_symlinks
+tune_global_npm_no_sudo
