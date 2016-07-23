@@ -5,6 +5,7 @@ source ~/.dotfiles/zsh/core.zsh
 source $DOTF/zsh/aliases.zsh
 source $DOTF/zsh/completion.zsh
 source $DOTF/zsh/prompt.zsh
+source $DOTF/zsh/history.zsh
 
 duration=$((($SECONDS - $START_TIME) * 1000))
 echo "\033[1;30m($(printf '%.2f' $duration)ms)\033[0m"
