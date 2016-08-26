@@ -8,6 +8,5 @@ export LC_CTYPE=en_US.UTF-8
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-export DOTF=~/.dotfiles
 export DOTL=~/.dotlocal
 export DEVELOPMENT_DIR=~/Dev

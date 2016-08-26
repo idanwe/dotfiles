@@ -1,7 +1,10 @@
 typeset -F SECONDS=0
 export START_TIME=$SECONDS
 
-source ~/.dotfiles/zsh/core.zsh
+export DOTF=~/.dotfiles
+
+source $DOTF/zsh/core.zsh
+source $DOTF/zsh/settings.zsh
 source $DOTF/zsh/aliases.zsh
 source $DOTF/zsh/completion.zsh
 source $DOTF/zsh/prompt.zsh
