@@ -15,6 +15,7 @@ echo "\033[1;30m($(printf '%.2f' $duration)ms)\033[0m"
 
 NPM_PACKAGES="${HOME}/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
+PATH="$PATH:`yarn global bin`"
 
 # Unset manpath so we can inherit from /etc/manpath via the `manpath` command
 unset MANPATH # delete if you already modified MANPATH elsewhere in your config
