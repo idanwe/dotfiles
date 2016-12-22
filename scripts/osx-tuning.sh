@@ -29,6 +29,9 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 1
 
+# Use all F1, F2 as standard keys
+defaults write com.apple.keyboard.fnState -bool false
+
 
 ###############################################################################
 # Screen                                                                      #
