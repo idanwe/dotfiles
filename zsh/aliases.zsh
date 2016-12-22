@@ -56,6 +56,11 @@ alias goplay="cd $DEVELOPMENT_DIR/playground"
 alias god="cd $DEVELOPMENT_DIR"
 alias godev="cd $DEVELOPMENT_DIR"
 
+alias gog="cd $DEVELOPMENT_DIR/gantzi"
+alias gov="cd $DEVELOPMENT_DIR/visit"
+alias gof="cd $DEVELOPMENT_DIR/furet-meteor"
+alias goo="cd $DEVELOPMENT_DIR/open-source"
+
 
 ############################################
 # osx specific aliases
