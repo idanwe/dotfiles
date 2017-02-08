@@ -60,6 +60,12 @@ alias gog="cd $DEVELOPMENT_DIR/gantzi"
 alias gov="cd $DEVELOPMENT_DIR/visit"
 alias gof="cd $DEVELOPMENT_DIR/furet-meteor"
 alias goo="cd $DEVELOPMENT_DIR/open-source"
+alias got="cd $DEVELOPMENT_DIR/Tmate"
+alias gots="cd $DEVELOPMENT_DIR/Tmate/Tmate-Apollo-Server"
+alias gotp="cd $DEVELOPMENT_DIR/Tmate/Tmate-Marketplace"
+alias gotm="cd $DEVELOPMENT_DIR/Tmate/Tmate-Management"
+
+alias subl.="subl $DOTF"
 
 
 ############################################
