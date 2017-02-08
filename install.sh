@@ -92,7 +92,7 @@ tune_global_npm_no_sudo() {
   # source: https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md
 
   # Create a directory for globally packages
-  mkdir "${HOME}/.npm-packages"
+  [ -d "${HOME}/.npm-packages"] || mkdir "${HOME}/.npm-packages"
 
   # Indicate to npm where to store globally installed packages. In your ~/.npmrc file add
   echo "prefix=${HOME}/.npm-packages" >> ~/.npmrc
