@@ -1,5 +1,5 @@
 # sublime as default
-export EDITOR="subl"
+export EDITOR="subl -w"
 
 # Prefer US English and use UTF-8
 export LANG=en_US.UTF-8
