@@ -1,9 +1,9 @@
 # Add these lines (with your details) to ~/.dotlocal/gitconfig
-# [user]
-#  name = Idan Wender
-#  email = idanwe2@gmail.com
-# [github]
-#  user = idanwe
+[user]
+  name = Idan Wender
+  email = idanwe2@gmail.com
+[github]
+  user = idanwe
 
 [include]
   path = ~/.dotlocal/gitconfig
