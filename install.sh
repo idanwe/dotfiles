@@ -114,6 +114,10 @@ tune_global_npm_no_sudo() {
   echo 'export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"' >> ~/.zshrc
 }
 
+set_sublime_config() {
+  ./sublime/set_sublime_config.sh
+}
+
 # run the install function
 install_xcode
 install_brew
@@ -122,3 +126,4 @@ install_common
 install_osx_tuning
 install_symlinks
 tune_global_npm_no_sudo
+set_sublime_config
