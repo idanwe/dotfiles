@@ -38,5 +38,4 @@ brew_cask_install disk-inventory-x
 brew_cask_install vlc
 brew_cask_install mplayerx
 brew_cask_install licecap               # simple animated screen captures
-brew_cask_install utorrent
 brew_cask_install skitch
