@@ -62,6 +62,10 @@ install_common() {
   # Type `git open` to open the GitHub page or website for a repository.
   npm_install git-open
 
+  # install meteor
+  bullet "Installing meteor"
+  curl https://install.meteor.com/ | sh
+
   # change to bash 4 (installed by homebrew)
   BASHPATH=$(brew --prefix)/bin/bash
   #sudo echo $BASHPATH >> /etc/shells
