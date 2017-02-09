@@ -62,6 +62,10 @@ install_common() {
   # Type `git open` to open the GitHub page or website for a repository.
   npm_install git-open
 
+  # install nvm
+  bullet "Installing nvm"
+  curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
+
   # install meteor
   bullet "Installing meteor"
   curl https://install.meteor.com/ | sh
