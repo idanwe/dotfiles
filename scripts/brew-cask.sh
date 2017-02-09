@@ -25,6 +25,7 @@ brew_cask_install hyper
 brew_cask_install sublime-text
 brew_cask_install imagealpha            # Mac GUI for pngquant, pngnq and posterizer
 brew_cask_install imageoptim            # Removes bloated metadata. Saves disk space & bandwidth by compressing images without losing quality
+brew_cask_install slack
 
 # fun
 # brew_cask_install miro-video-converter
