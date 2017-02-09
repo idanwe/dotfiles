@@ -22,7 +22,7 @@ brew_cask_install flux                  # It makes the color of your computer's 
 # dev
 brew_cask_install iterm2
 brew_cask_install hyper
-brew_cask_install sublime-text3
+brew_cask_install sublime-text
 brew_cask_install imagealpha            # Mac GUI for pngquant, pngnq and posterizer
 brew_cask_install imageoptim            # Removes bloated metadata. Saves disk space & bandwidth by compressing images without losing quality
 
