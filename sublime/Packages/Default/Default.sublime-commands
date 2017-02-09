@@ -1,0 +1,6 @@
+[
+  { "caption": "Reveal in Side Bar", "command": "reveal_in_side_bar" },
+  { "caption": "Preferences: Settings - User", "command": "open_file", "args": { "file": "${packages}/User/Preferences.sublime-settings" } },
+  { "caption": "Preferences: Settings - Default", "command": "open_file", "args": { "file": "${packages}/Default/Preferences.sublime-settings" } },
+  { "caption": "Preferences: Browse Packages", "command": "open_dir", "args": {"dir": "$packages"} }
+]

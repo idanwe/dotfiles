@@ -1,0 +1,39 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"All Autocomplete",
+		"Babel",
+		"Can I Use",
+		"Case Conversion",
+		"Delete Current File",
+		"Dotfiles Syntax Highlighting",
+		"File Rename",
+		"Git",
+		"Git Commit Message Syntax",
+		"GitGutter",
+		"Handlebars",
+		"HyperClick",
+		"Inc-Dec-Value",
+		"JavaScript Console",
+		"JavaScriptNext - ES6 Syntax",
+		"JSX",
+		"LESS",
+		"LogMagic",
+		"MaxPane",
+		"MoveTab",
+		"Package Control",
+		"Path Tools",
+		"PlainTasks",
+		"React ES6 Snippets",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-eslint",
+		"Theme - Afterglow",
+		"TypeScript"
+	]
+}
