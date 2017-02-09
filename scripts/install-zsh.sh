@@ -10,6 +10,10 @@ function install_zsh() {
   my_shell=$(echo $SHELL | rev | cut -d/ -f1 | rev)
   if [ "$my_shell" != "zsh" ]; then
     zsh_bin="$(which zsh)"
+
+    bullet "Add shell ${zsh_bin} to /etc/shells"
+    sudo sh -c "echo $zsh_bin >> /etc/shells"
+
     bullet "Changing shell to ${zsh_bin}... "
     chsh -s "$zsh_bin"
   fi
