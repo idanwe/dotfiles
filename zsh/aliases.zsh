@@ -67,6 +67,7 @@ alias gotm="cd $DEVELOPMENT_DIR/Tmate/Tmate-Management"
 
 alias subl.="subl $DOTF"
 
+alias ip="ifconfig | grep netmask | grep broadcast"
 
 ############################################
 # osx specific aliases
