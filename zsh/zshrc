@@ -13,6 +13,8 @@ source $DOTF/zsh/history.zsh
 duration=$((($SECONDS - $START_TIME) * 1000))
 echo "\033[1;30m($(printf '%.2f' $duration)ms)\033[0m"
 
+PATH="$PATH:$DOTF/in_path"
+
 NPM_PACKAGES="${HOME}/.npm-packages"
 PATH="$NPM_PACKAGES/bin:$PATH"
 PATH="$PATH:`yarn global bin`"
