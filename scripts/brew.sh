@@ -44,6 +44,7 @@ brew_install diff-so-fancy                  #*** Good-lookin' diffs. Actually…
 brew_install node                           # This installs `npm` too using the recommended installation method
 brew_install mongodb
 brew_install yarn
+brew_install heroku
 
 brew_install ssh-copy-id                    #*** Add a public key to a remote machine's authorized_keys file
 brew_install imagemagick --with-webp        #*** Tools and libraries to manipulate images in many formats
