@@ -69,6 +69,10 @@ alias subl.="subl $DOTF"
 
 alias ip="ifconfig | grep netmask | grep broadcast"
 
+alias music=itunes
+alias play="itunes play"
+alias pause="itunes pause"
+
 ############################################
 # osx specific aliases
 ############################################
