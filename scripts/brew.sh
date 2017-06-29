@@ -58,5 +58,7 @@ brew_install terminal-notifier              #*** Send OS X User Notifications fr
 
 brew_install tmux                           #*** Terminal multiplexer
 
+brew_install shpotify
+
 # Remove outdated versions from the cellar
 brew cleanup
