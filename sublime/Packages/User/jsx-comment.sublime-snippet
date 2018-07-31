@@ -1,0 +1,8 @@
+<snippet>
+  <content><![CDATA[
+{/* ${1:JSX Comment} */}
+]]></content>
+  <!-- Hit `jc` in any JS document to get a JSX comment -->
+  <tabTrigger>jc</tabTrigger>
+  <scope>source.js</scope>
+</snippet>

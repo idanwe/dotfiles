@@ -1,0 +1,25 @@
+ _   _                           _
+| \ | |  __ _   ___   _ __ ___  (_)
+|  \| | / _` | / _ \ | '_ ` _ \ | |
+| |\  || (_| || (_) || | | | | || |
+|_| \_| \__,_| \___/ |_| |_| |_||_|
+
+Congratulations on installing the most accurate and actively maintained syntax
+definitions for sublime text! If you find any bug or have suggestions to improve
+it, don’t hesitate to report here:
+
+  https://github.com/borela/naomi/issues
+
+After installing the plugin and restarting Sublime, it will automatically use
+the syntaxes contained in this package.
+
+You can also set them manually through:
+
+  1. Go to the “View” menu;
+  2. Then “Syntax”;
+  3. Finally “Naomi”;
+
+Or:
+
+  1. Click at the bottom right corner where it shows the current syntax;
+  2. Then “Naomi”.

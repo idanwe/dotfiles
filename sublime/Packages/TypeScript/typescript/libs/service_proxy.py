@@ -92,6 +92,13 @@ class ServiceProxy:
         response_dict = self.__comm.sendCmdSync(json_str, req_dict["seq"])
         return response_dict
 
+    def type_definition(self, path, location=Location(1, 1)):
+        args = {"file": path, "line": location.line, "offset": location.offset}
+        req_dict = self.create_req_dict("typeDefinition", args)
+        json_str = json_helpers.encode(req_dict)
+        response_dict = self.__comm.sendCmdSync(json_str, req_dict["seq"])
+        return response_dict
+
     def format(self, path, begin_location=Location(1, 1), end_location=Location(1, 1)):
         args = {
             "file": path,
@@ -224,14 +231,6 @@ class ServiceProxy:
                 callback,
                 req_dict["seq"]
             )
-
-    def get_event(self):
-        event_json_str = self.__comm.getEvent()
-        return json_helpers.decode(event_json_str) if event_json_str is not None else None
-
-    def get_event_from_worker(self):
-        event_json_str = self.__worker_comm.getEvent()
-        return json_helpers.decode(event_json_str) if event_json_str is not None else None
 
     def save_to(self, path, alternatePath):
         args = {"file": path, "tmpfile": alternatePath}

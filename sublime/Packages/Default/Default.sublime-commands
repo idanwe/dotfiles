@@ -1,4 +1,8 @@
 [
+  { "caption": "Project: Save As", "command": "save_project_as" },
+  { "caption": "Project: Close", "command": "close_project" },
+  { "caption": "Project: Add Folder", "command": "prompt_add_folder" },
+
   { "caption": "Reveal in Side Bar", "command": "reveal_in_side_bar" },
   { "caption": "Preferences: Settings - User", "command": "open_file", "args": { "file": "${packages}/User/Preferences.sublime-settings" } },
   { "caption": "Preferences: Settings - Default", "command": "open_file", "args": { "file": "${packages}/Default/Preferences.sublime-settings" } },
