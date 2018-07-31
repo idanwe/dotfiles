@@ -115,7 +115,7 @@ tune_global_npm_no_sudo() {
 }
 
 set_sublime_config() {
-  ./sublime/set_sublime_config.sh
+  ./scripts/set_sublime_config.sh
 }
 
 # run the install function
