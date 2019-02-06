@@ -10,3 +10,9 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 export DOTL=~/.dotlocal
 export DEVELOPMENT_DIR=~/Dev
+
+source_if_exists() {
+  if [ -e "$1" ]; then source $1; fi
+}
+
+source_if_exists "$DOTL/localzshrc"

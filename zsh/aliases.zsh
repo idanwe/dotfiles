@@ -52,29 +52,45 @@ alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo 
 # navigation shortcuts
 alias godot="cd $DOTF"
 alias go.="cd $DOTF"
-alias goplay="cd $DEVELOPMENT_DIR/playground"
 alias god="cd $DEVELOPMENT_DIR"
 alias godev="cd $DEVELOPMENT_DIR"
+alias gonh="cd $DEVELOPMENT_DIR/onh"
+alias gopets="cd $DEVELOPMENT_DIR/pets"
+alias goplay="cd $DEVELOPMENT_DIR/playground"
 
-alias gog="cd $DEVELOPMENT_DIR/gantzi"
-alias gov="cd $DEVELOPMENT_DIR/visit"
-alias gof="cd $DEVELOPMENT_DIR/furet-meteor"
+alias gov="cd $DEVELOPMENT_DIR/onh/visitt-dev/visitt"
+alias gova="cd $DEVELOPMENT_DIR/onh/visitt-dev/vcon-android"
+alias govi="cd $DEVELOPMENT_DIR/onh/visitt-dev/vcon-ios"
+alias got="cd $DEVELOPMENT_DIR/onh/Tmate"
+alias gotgs="cd $DEVELOPMENT_DIR/onh/Tmate/tmate-gs"
+alias gots="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Apollo-Server"
+alias gotp="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Marketplace"
+alias gotm="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Management"
+alias gof="cd $DEVELOPMENT_DIR/pets/furet-meteor"
 alias goo="cd $DEVELOPMENT_DIR/open-source"
-alias got="cd $DEVELOPMENT_DIR/Tmate"
-alias gots="cd $DEVELOPMENT_DIR/Tmate/Tmate-Apollo-Server"
-alias gotp="cd $DEVELOPMENT_DIR/Tmate/Tmate-Marketplace"
-alias gotm="cd $DEVELOPMENT_DIR/Tmate/Tmate-Management"
 
 alias subl.="subl $DOTF"
+alias code.="code $DOTF"
+
+alias cool="graphcool-framework"
+alias gc="graphcool-framework"
 
 alias ip="ifconfig | grep netmask | grep broadcast"
 
 alias music=spotify
-alias splay="spotify play"
-alias SPLAY="spotify play"
-alias דפךשט="spotify play"
+alias sp="spotify play"
+alias ss="spotify pause"
+alias splay="sp"
+alias SPLAY="sp"
+alias דפךשט="sp"
 alias spause="spotify pause"
-alias snext="spotify next"
+alias sn="spotify next"
+alias pn="sn"
+alias PN="sn"
+alias פנ="sn"
+alias snext="sn"
+alias SNEXT="sn"
+alias דמקסא="sn"
 
 ############################################
 # osx specific aliases
