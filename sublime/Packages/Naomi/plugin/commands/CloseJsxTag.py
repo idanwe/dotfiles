@@ -1,5 +1,3 @@
-# [PackageDev] target_format: plist, ext: tmPreferences
-
 # Licensed under the Apache License, Version 2.0 (the “License”); you may not
 # use this file except in compliance with the License. You may obtain a copy of
 # the License at
@@ -12,9 +10,17 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-# This is necessary because “while” is also used in “do...while” loops.
-name: JS’s indentation for while loops
-scope: source.js meta.naomi meta.loop.while - (comment, string)
-settings:
-  bracketIndentNextLinePattern: |
-    (?x)^\s*while\b
+from sublime import Region
+from sublime_plugin import TextCommand
+
+
+class NaomiCloseJsxTagCommand(TextCommand):
+    def __init__(self, view):
+        self.view = view
+
+    def run(self, edit):
+        cursor = self.view.sel()[0].begin()
+        self.view.run_command('insert', {'characters': '>'})
+        self.view.run_command('close_tag')
+        self.view.sel().clear()
+        self.view.sel().add(Region(cursor + 1))

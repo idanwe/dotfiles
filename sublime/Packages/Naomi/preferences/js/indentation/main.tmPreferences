@@ -3,19 +3,38 @@
 <plist version="1.0">
 <dict>
 	<key>name</key>
-	<string>Block comment’s indentation</string>
+	<string>JS’s indentation</string>
 	<key>scope</key>
-	<string>meta.naomi comment.block</string>
+	<string>source.js - (comment, string)</string>
 	<key>settings</key>
 	<dict>
 		<key>bracketIndentNextLinePattern</key>
-		<string></string>
+		<string>(?x)^\s*
+(?&gt; do
+  | else
+  | for
+  | if
+)\b
+</string>
 		<key>decreaseIndentPattern</key>
-		<string></string>
+		<string>(?x)^
+\s*
+(?&gt; \}
+  | \]
+  | \)
+)
+</string>
 		<key>disableIndentNextLinePattern</key>
 		<string></string>
 		<key>increaseIndentPattern</key>
-		<string></string>
+		<string>(?x)^
+.*
+(?&gt; \{
+  | \[
+  | \(
+)
+\s*$
+</string>
 		<key>preserveIndent</key>
 		<false/>
 		<key>unIndentedLinePattern</key>

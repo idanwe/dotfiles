@@ -12,12 +12,9 @@
 # License for the specific language governing permissions and limitations under
 # the License.
 
-name: Block comment’s indentation
-scope: meta.naomi comment.block
+# This is necessary because “while” is also used in “do...while” loops.
+name: JS’s indentation for while loops
+scope: source.js meta.loop.while - (comment, string)
 settings:
-  preserveIndent: false
-  increaseIndentPattern: ""
-  decreaseIndentPattern: ""
-  bracketIndentNextLinePattern: ""
-  disableIndentNextLinePattern: ""
-  unIndentedLinePattern: ""
+  bracketIndentNextLinePattern: |
+    (?x)^\s*while\b

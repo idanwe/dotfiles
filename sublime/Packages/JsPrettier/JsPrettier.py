@@ -278,10 +278,14 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
             if is_str_empty_or_whitespace_only(source):
                 return st_status_message('Nothing to format in file.')
 
-            transformed = self.format_code(source, node_path, prettier_cli_path, prettier_options, view)
+            result = self.format_code(
+                source, node_path, prettier_cli_path, prettier_options, view,
+                provide_cursor=True)
             if self.has_error:
                 self.format_console_error()
                 return self.show_status_bar_error()
+
+            transformed, new_cursor = result
 
             # sanity check to ensure textual content was returned from cmd
             # stdout, not necessarily caught in OSError try/catch
@@ -308,6 +312,8 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
                 source_modified = True
 
             if source_modified:
+                view.sel().clear()
+                view.sel().add(sublime.Region(new_cursor))
                 st_status_message('File formatted.')
             else:
                 st_status_message('File already formatted.')
@@ -343,8 +349,13 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
                 view.replace(edit, region, transformed)
                 st_status_message('Selection(s) formatted.')
 
-    def format_code(self, source, node_path, prettier_cli_path, prettier_options, view):
+    def format_code(self, source, node_path, prettier_cli_path, prettier_options, view, provide_cursor=False):
         self._error_message = None
+
+        cursor = None
+        if provide_cursor:
+            cursor = view.sel()[0].a
+            prettier_options += ['--cursor-offset', str(cursor)]
 
         if is_str_none_or_empty(node_path):
             cmd = [prettier_cli_path] \
@@ -377,9 +388,23 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
                     scroll_view_to(view, error_line, error_col)
 
                 return None
+
+            new_cursor = None
             if stderr:
+                stderr_output = stderr.decode('utf-8')
+                if provide_cursor:
+                    stderr_lines = stderr_output.splitlines()
+                    stderr_output, new_cursor = '\n'.join(stderr_lines[:-1]), stderr_lines[-1]
+
                 # allow warnings to pass-through
-                print(format_error_message(stderr.decode('utf-8'), str(proc.returncode)))
+                if stderr_output:
+                    print(format_error_message(stderr_output, str(proc.returncode)))
+
+            if provide_cursor:
+                if not new_cursor and cursor is not None:
+                    new_cursor = cursor
+                return stdout.decode('utf-8'), int(new_cursor)
+
             return stdout.decode('utf-8')
         except OSError as ex:
             sublime.error_message('{0} - {1}'.format(PLUGIN_NAME, ex))
@@ -392,6 +417,14 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
         if self.is_source_js(view) is True:
             return True
         if self.is_css(view) is True:
+            return True
+        if self.is_angular_html(view) is True:
+            return True
+        if self.is_mdx(view) is True:
+            return True
+        if self.is_markdown(view) is True:
+            return True
+        if self.is_yaml(view) is True:
             return True
         if self.is_html(view) is True:
             return True
@@ -460,9 +493,19 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
                     prettier_options.append('graphql')
                     continue
 
+                if self.is_mdx(view):
+                    prettier_options.append(cli_option_name)
+                    prettier_options.append('mdx')
+                    continue
+
                 if self.is_markdown(view):
                     prettier_options.append(cli_option_name)
                     prettier_options.append('markdown')
+                    continue
+
+                if self.is_yaml(view):
+                    prettier_options.append(cli_option_name)
+                    prettier_options.append('yaml')
                     continue
 
                 if self.is_vue(view):
@@ -470,14 +513,19 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
                     prettier_options.append('vue')
                     continue
 
-                if self.is_source_js(view):
+                if self.is_angular_html(view):
+                    prettier_options.append(cli_option_name)
+                    prettier_options.append('angular')
+                    continue
+
+                if self.is_source_js(view) or self.is_es_module(view):
                     prettier_options.append(cli_option_name)
                     prettier_options.append('babylon')
                     continue
 
                 if self.is_html(view):
                     prettier_options.append(cli_option_name)
-                    prettier_options.append('parse5')
+                    prettier_options.append('html')
                     continue
 
             if not prettier_config_exists and not has_custom_config_defined:
@@ -505,9 +553,9 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
         # add the current file name to `--stdin-filepath`, only when
         # the current file being edited is NOT html, and in order
         # detect and format css/js selection(s) within html files:
-        if not self.is_html(view):
-            prettier_options.append('--stdin-filepath')
-            prettier_options.append(file_name)
+        # if not self.is_html(view):
+        prettier_options.append('--stdin-filepath')
+        prettier_options.append(file_name)
 
         # Append any additional specified arguments:
         prettier_options.extend(parsed_additional_cli_args)
@@ -576,6 +624,15 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
         return False
 
     @staticmethod
+    def is_es_module(view):
+        filename = view.file_name()
+        if not filename:
+            return False
+        if filename.endswith('.mjs'):
+            return True
+        return False
+
+    @staticmethod
     def is_graphql(view):
         filename = view.file_name()
         if not filename:
@@ -590,7 +647,9 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
         if not filename:
             return False
         scopename = view.scope_name(0)
-        if scopename.startswith('text.html.markdown') or scopename.startswith('text.html.vue'):
+        if scopename.startswith('text.html.markdown') \
+            or scopename.startswith('text.html.vue') \
+                or filename.endswith('component.html'):
             return False
         if scopename.startswith('text.html') or filename.endswith('.html') or filename.endswith('.htm'):
             return True
@@ -607,12 +666,40 @@ class JsPrettierCommand(sublime_plugin.TextCommand):
         return False
 
     @staticmethod
+    def is_mdx(view):
+        filename = view.file_name()
+        if not filename:
+            return False
+        if filename.endswith('.mdx'):
+            return True
+        return False
+
+    @staticmethod
+    def is_yaml(view):
+        filename = view.file_name()
+        if not filename:
+            return False
+        scopename = view.scope_name(0)
+        if scopename.startswith('source.yaml') or filename.endswith('.yml'):
+            return True
+        return False
+
+    @staticmethod
     def is_vue(view):
         filename = view.file_name()
         if not filename:
             return False
         scopename = view.scope_name(0)
         if scopename.startswith('text.html.vue') or filename.endswith('.vue'):
+            return True
+        return False
+
+    @staticmethod
+    def is_angular_html(view):
+        filename = view.file_name()
+        if not filename:
+            return False
+        if filename.endswith('.component.html'):
             return True
         return False
 

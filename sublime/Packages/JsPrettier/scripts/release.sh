@@ -11,18 +11,22 @@
 #
 # Usage:
 #
-#   $ release.sh [options] [version]
+#     release.sh [options] <version>
 #
 # Examples:
 #
 #   To bump and tag to the specified version (1.2.1):
-#       $ release.sh 1.2.1
+#
+#     release.sh 1.2.1
 #
 #   To bump and tag automatically incrementing to the next patch version:
-#       $ release.sh --next
+#
+#     release.sh --next
 ##
 
 set -e
+set -o pipefail
+[ "$TRAVIS" == "true" ] && set -x
 
 VERSION=$1
 PREVIOUS_VERSION="$(git describe --abbrev=0 --tags)"
@@ -58,12 +62,12 @@ show_error() {
 }
 
 show_usage() {
+    echo "Release(.sh) tasks simplified."
     echo
-    echo "Usage: $SCRIPTNAME [options] [version]"
+    echo "Usage: $SCRIPTNAME [options] <version>"
     echo
-    echo "Release tasks bulked into one script."
+    echo "Options:"
     echo
-    echo "OPTIONS"
     echo "    -n, --next    auto-increment to the next patch version"
     echo "    -h, --help    show usage"
     echo

@@ -142,13 +142,13 @@ file, accessible from the **Preferences** > **Package Settings** >
     If Sublime Text has problems automatically resolving a path to [Prettier],
     you can set a custom path here.
 
-    When the setting is empty, the plug-in will attempt to find Prettier by...
+    When the setting is empty, the plug-in will attempt to find Prettier by:
 
-    - Searching the path relative to the current Sublime Text Project directory,
-      e.g.: `node_modules/.bin/prettier`.
-    - The USER home directory, e.g.: `$HOME/node_modules/.bin/prettier`.
-    - The *JsPrettier* plug-in directory, and `node_modules/.bin/prettier` path.
-    - Globally installed Prettier.
+    - Searching the path relative to the current Sublime Text Project directory...
+      `node_modules/.bin/prettier` and `node_modules/prettier/bin-prettier.js`.
+    - The *JsPrettier* plug-in directory... `node_modules/.bin/prettier` and `node_modules/prettier/bin-prettier.js`.
+    - The current user's home directory... `$HOME/node_modules/.bin/prettier`.
+    - And finally a globally installed Prettier instance.
 
     > [nvm] users must set an appropriate absolute *prettier_cli_path* (and
     > absolute *node_path*), according to the runtime environment.
@@ -194,10 +194,12 @@ file, accessible from the **Preferences** > **Package Settings** >
     Text syntaxes.
 
 - **custom_file_extensions** (default: [])  
-    There's built-in support already for `js`, `jsx`, `json`, `graphql/gql`,
-    `ts`, `tsx`, `css`, `scss`, `less`, `md` and `vue` files. Put additional
-    file extensions here, but be sure not to include the leading dot in the
-    file extension.
+    There's built-in support already for `js`, `jsx`, `mjs`, `json`, `html`,
+    `graphql/gql`, `ts`, `tsx`, `css`, `scss`, `less`, `md`, `mdx`, `yml`,
+    `vue` and `component.html` (angular html) files.
+
+    Put additional file extensions here, and be sure not to include the
+    leading dot in the file extension.
 
 - **max_file_size_limit** (default: ***-1***)  
     The max allowed file size to format in bytes. For performance reasons,
@@ -249,11 +251,7 @@ file, accessible from the **Preferences** > **Package Settings** >
     placed at the end of the last line, instead of alone on the next line.
 
 - **parser** (default: "***babylon***")  
-    Which parser to use. Valid options are "***flow***", "***babylon***",
-    "***typescript***", "***css***", "***json***", "***graphql***"
-    and "***markdown***".
-  
-    The `parser` option is automatically set by the plug-in (JsPrettier), based
+    The [`parser`] is automatically set by the plug-in (JsPrettier), based
     on the contents of current file or selection.
   
 - **semi** (default: ***true***)  
@@ -283,10 +281,11 @@ file, accessible from the **Preferences** > **Package Settings** >
     ```
 
 - **proseWrap** (default: "***preserve***")  
-    (*Markdown Only*) By default, Prettier will wrap markdown text as-is since
-    some services use a linebreak-sensitive renderer, e.g. GitHub comment and
-    BitBucket. In some cases you may want to rely on SublimeText soft wrapping
-    instead, so this option allows you to opt out with "never".
+    (*Markdown and YAML Only*) By default, Prettier will wrap Markdown and YAML
+    text as-is since some services use a linebreak-sensitive renderer, e.g.
+    GitHub comment and BitBucket. In some cases you may want to rely on
+    SublimeText soft wrapping instead, so this option allows you to opt out with
+    "never".
 
     Valid Options:
 
@@ -301,6 +300,16 @@ file, accessible from the **Preferences** > **Package Settings** >
 
     - "***avoid***" (default) - Omit parentheses when possible. Example: `x => x`
     - "***always***" - Always include parentheses. Example: `(x) => x`
+
+- **htmlWhitespaceSensitivity** (default: "***css***")  
+    (*HTML Only*) Specify the global whitespace sensitivity for HTML files,
+    see [whitespace-sensitive formatting] for more info.
+
+    Valid Options:
+
+    - "***css***" - Respect the default value of CSS display property.
+    - "***strict***" - Whitespaces are considered sensitive.
+    - "***ignore***" - Whitespaces are considered insensitive.
 
 See the Prettier Options [doc page] for more details and examples.
 
@@ -342,7 +351,8 @@ section.
                 "semi": true,
                 "requirePragma": false,
                 "proseWrap": "preserve",
-                "arrowParens": "avoid"
+                "arrowParens": "avoid",
+                "htmlWhitespaceSensitivity": "css"
             }
         }
     }
@@ -434,3 +444,5 @@ Jon LaBelle
 [MIT License]: https://github.com/jonlabelle/SublimeJsPrettier/blob/master/LICENSE.txt
 [doc page]: https://prettier.io/docs/en/options.html
 [`--ignore-path`]: https://prettier.io/docs/en/cli.html#ignore-path
+[whitespace-sensitive formatting]: https://prettier.io/blog/2018/11/07/1.15.0.html#whitespace-sensitive-formatting
+[`parser`]: https://prettier.io/docs/en/options.html#parser

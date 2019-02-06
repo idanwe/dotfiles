@@ -16,7 +16,8 @@ PRETTIER_CONFIG_FILES = [
     '.prettierrc.json',
     '.prettierrc.js',
     'prettier.config.js',
-    'package.json'
+    'package.json',
+    '.prettierrc.toml'
 ]
 
 PRETTIER_IGNORE_FILE = '.prettierignore'
@@ -71,6 +72,11 @@ PRETTIER_OPTION_CLI_MAP = [
         'option': 'arrowParens',
         'cli': '--arrow-parens',
         'default': 'avoid'
+    },
+    {
+        'option': 'htmlWhitespaceSensitivity',
+        'cli': '--html-whitespace-sensitivity',
+        'default': 'css'
     }
 ]
 
@@ -86,5 +92,8 @@ AUTO_FORMAT_FILE_EXTENSIONS = [
     'scss',
     'less',
     'md',
-    'vue'
+    'vue',
+    'yml',
+    'mjs',
+    'mdx'
 ]
