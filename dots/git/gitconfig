@@ -13,7 +13,7 @@
   diff = auto
 
 [alias]
-  pl = fetch origin && pull --rebase
+  pl = pull --rebase
   pm = pull-me
   ps = push
   st = status
@@ -74,3 +74,6 @@
 #  pager =
 ;[credential]
 	;helper = osxkeychain
+[gui]
+	fontui = -family \".SF NS Text\" -size 15 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family Monaco -size 13 -weight normal -slant roman -underline 0 -overstrike 0
