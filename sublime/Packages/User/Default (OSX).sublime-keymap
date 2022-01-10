@@ -1,9 +1,0 @@
-[
-  { "keys": ["alt+`"], "command": "reveal_in_side_bar" },
-  { "keys": ["alt+r"], "command": "reveal_in_side_bar" },
-  { "keys": ["alt+ר"], "command": "reveal_in_side_bar" },
-  { "keys": ["alt+s"], "command": "sort_lines", "args": {"case_sensitive": false} },
-  { "keys": ["alt+ד"], "command": "sort_lines", "args": {"case_sensitive": false} },
-  { "keys": ["super+b"], "command": "toggle_side_bar" },
-  { "keys": ["super+נ"], "command": "toggle_side_bar" },
-]

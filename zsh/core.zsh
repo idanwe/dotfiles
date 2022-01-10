@@ -1,4 +1,5 @@
 # sublime as default
+alias subl="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'"
 export EDITOR="subl -w"
 
 # Prefer US English and use UTF-8

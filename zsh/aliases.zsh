@@ -43,37 +43,12 @@ alias g="git"
 # File size
 alias fs="stat -f \"%z bytes\""
 
-
-# Update installed Ruby gems, Homebrew, npm, and their installed packages
-alias brew_update="brew -v update; brew upgrade --force-bottle --cleanup; brew cleanup; brew cask cleanup; brew prune; brew doctor; npm-check -g -u"
-alias update_brew_npm_gem='brew_update; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update --no-document'
-
-
 # navigation shortcuts
 alias godot="cd $DOTF"
 alias go.="cd $DOTF"
 alias god="cd $DEVELOPMENT_DIR"
-alias godev="cd $DEVELOPMENT_DIR"
-alias gonh="cd $DEVELOPMENT_DIR/onh"
-alias gopets="cd $DEVELOPMENT_DIR/pets"
-alias goplay="cd $DEVELOPMENT_DIR/playground"
-
-alias gov="cd $DEVELOPMENT_DIR/onh/visitt-dev/visitt"
-alias gova="cd $DEVELOPMENT_DIR/onh/visitt-dev/vcon-android"
-alias govi="cd $DEVELOPMENT_DIR/onh/visitt-dev/vcon-ios"
-alias got="cd $DEVELOPMENT_DIR/onh/Tmate"
-alias gotgs="cd $DEVELOPMENT_DIR/onh/Tmate/tmate-gs"
-alias gots="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Apollo-Server"
-alias gotp="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Marketplace"
-alias gotm="cd $DEVELOPMENT_DIR/onh/Tmate/Tmate-Management"
-alias gof="cd $DEVELOPMENT_DIR/pets/furet-meteor"
-alias goo="cd $DEVELOPMENT_DIR/open-source"
 
 alias subl.="subl $DOTF"
-alias code.="code $DOTF"
-
-alias cool="graphcool-framework"
-alias gc="graphcool-framework"
 
 alias ip="ifconfig | grep netmask | grep broadcast"
 
@@ -104,17 +79,9 @@ alias chrome="open -a ~/Applications/Google\ Chrome.app"
 
 alias zip="zip -x *.DS_Store -x *__MACOSX* -x *.AppleDouble*"
 
-# Open iOS Simulator
-
-alias ios="open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app"
-
 # Start screen saver
 
 alias afk="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine"
-
-# Log off
-
-alias logoff="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
 
 # Empty trash on mounted volumes and main HDD, and clear system logs
 

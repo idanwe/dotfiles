@@ -21,22 +21,13 @@ brew_cask_install flux                  # It makes the color of your computer's 
 
 # dev
 brew_cask_install iterm2
-brew_cask_install hyper
 brew_cask_install sublime-text
-brew_cask_install imagealpha            # Mac GUI for pngquant, pngnq and posterizer
-brew_cask_install imageoptim            # Removes bloated metadata. Saves disk space & bandwidth by compressing images without losing quality
-brew_cask_install slack
+# brew_cask_install slack
 brew_cask_install quicklook-json        # Quicly inspect json from finder
 
-# fun
-# brew_cask_install miro-video-converter
-
 # browsers
-brew_cask_install google-chrome
+# brew_cask_install google-chrome
 
 # less often
-brew_cask_install disk-inventory-x
+# brew_cask_install disk-inventory-x
 brew_cask_install vlc
-brew_cask_install mplayerx
-brew_cask_install licecap               # simple animated screen captures
-brew_cask_install skitch
